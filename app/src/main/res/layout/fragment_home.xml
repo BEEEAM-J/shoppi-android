@@ -21,12 +21,12 @@
                 style="@style/TextHeadline5.Black02.Bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="32dp"
-                android:paddingBottom="24dp"
                 android:layout_marginEnd="72dp"
                 android:maxLines="2"
+                android:paddingStart="16dp"
+                android:paddingTop="32dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="24dp"
                 tools:ignore="MissingConstraints"
                 tools:text="IVY님, 이런 상품\n어때요?" />
 
@@ -36,8 +36,8 @@
                 android:layout_height="68dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="4dp"
-                android:src="@drawable/ic_gnb_back"
                 android:scaleType="center"
+                android:src="@drawable/ic_gnb_back"
                 tools:ignore="MissingConstraints" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -51,8 +51,26 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_home_banner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/viewpager_home_banner_indicator"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewpager_home_banner"
+                app:tabBackground="@drawable/selector_viewpager_indicator"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

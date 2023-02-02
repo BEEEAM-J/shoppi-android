@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="viewPager_item_width">312dp</dimen>
+    <dimen name="viewPager_item_margin">16dp</dimen>
+</resources>
