@@ -1,4 +1,4 @@
-package com.shoppi.app
+package com.shoppi.app.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.shoppi.app.ui.common.Banner
+import com.shoppi.app.GlideApp
+import com.shoppi.app.R
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
