@@ -1,6 +1,6 @@
 package com.shoppi.app.repository
 
-import com.shoppi.app.ui.common.HomeData
+import com.shoppi.app.model.HomeData
 
 interface HomeDataSource {
 

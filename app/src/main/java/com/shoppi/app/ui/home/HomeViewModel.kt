@@ -3,8 +3,8 @@ package com.shoppi.app.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.shoppi.app.ui.common.Banner
-import com.shoppi.app.ui.common.Title
+import com.shoppi.app.model.Banner
+import com.shoppi.app.model.Title
 import com.shoppi.app.repository.HomeRepository
 
 class HomeViewModel(private val homeRepository: HomeRepository): ViewModel() {
