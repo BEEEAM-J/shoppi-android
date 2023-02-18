@@ -1,0 +1,82 @@
+{
+  "fashion_female": {
+    "top_selling": {
+      "title": {
+        "text": "인기상품"
+      },
+      "categories": [
+        {
+          "category_id": "fashion_jacket",
+          "label": "자켓",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867255-7c05a9d3-45bf-427e-8889-f0921b23ed22.png",
+          "updated": true
+        },
+        {
+          "category_id": "fashion_sweater",
+          "label": "스웨터",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867259-2d2b5cb6-c490-4ec6-a951-ae580e949f2d.png",
+          "updated": false
+        },
+        {
+          "category_id": "fashion_cap",
+          "label": "캡모자",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867254-07e67744-5ad2-4376-b67d-422c76781785.png",
+          "updated": false
+        },
+        {
+          "category_id": "fashion_belt",
+          "label": "벨트",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867253-6b3690ea-239b-4d22-87d6-ec18bfb2f45e.png",
+          "updated": false
+        },
+        {
+          "category_id": "fashion_shirt",
+          "label": "셔츠",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867256-3e8e142e-dc4a-435d-a3d9-2f30531e70b4.png",
+          "updated": false
+        },
+        {
+          "category_id": "fashion_skirt",
+          "label": "스커트",
+          "thumbnail_image_url": "https://user-images.githubusercontent.com/107917980/219867257-bb4b8dff-ce6d-4c49-b969-e81917336320.png",
+          "updated": false
+        }
+      ]
+    },
+    "promotions": {
+      "title": {
+        "text": "추천상품"
+      },
+      "items": [
+        {
+          "label": "[19차 리오더] 페이크 레더 숏 테일러 자켓 블랙",
+          "discount_rate": 10,
+          "price": 90000,
+          "representative_image_url": "https://user-images.githubusercontent.com/107917980/219867245-b3b166ad-0d21-403e-8edc-673f636704e3.png",
+          "product_id": "jacket_1"
+        },
+        {
+          "label": "캐시미어 100% 터틀넥 스웨터",
+          "discount_rate": 15,
+          "price": 70000,
+          "representative_image_url": "https://user-images.githubusercontent.com/107917980/219867250-5dea30e1-dd46-4c87-b815-511920fc5275.png",
+          "product_id": "sweater_1"
+        },
+        {
+          "label": "반팔 스트라이프 스웨터",
+          "discount_rate": 20,
+          "price": 30000,
+          "representative_image_url": "https://user-images.githubusercontent.com/107917980/219867251-7863b17d-47ad-4d34-81ca-ea939aa1fdec.png",
+          "product_id": "sweater_2"
+        },
+        {
+          "label": "화이트 스포츠 점퍼",
+          "discount_rate": 10,
+          "price": 150000,
+          "representative_image_url": "https://user-images.githubusercontent.com/107917980/219867252-dbe69fb4-2dcd-43aa-831b-bad5dfa3ba2b.png",
+          "product_id": "sport_1"
+        }
+      ]
+    }
+  }
+}
