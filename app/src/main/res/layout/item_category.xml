@@ -4,6 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+<!--        클릭 이벤트를 구현하기 위해서 View Model을 바인딩한다.-->
+        <variable
+            name="viewModel"
+            type="com.shoppi.app.ui.category.CategoryViewModel" />
+
         <variable
             name="category"
             type="com.shoppi.app.model.Category" />
@@ -15,6 +20,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"
+        android:onClick="@{() -> viewModel.openCategoryDetail(category)}"
         android:background="@drawable/background_bluegrey_r20">
 
         <com.google.android.material.imageview.ShapeableImageView
