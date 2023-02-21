@@ -11,6 +11,7 @@ import com.shoppi.app.common.KEY_CATEGORY_ID
 import com.shoppi.app.common.KEY_CATEGORY_LABEL
 import com.shoppi.app.databinding.FragmentCategoryDetailBinding
 import com.shoppi.app.model.Promotion
+import com.shoppi.app.model.TopSelling
 import com.shoppi.app.ui.common.ViewModelFactory
 
 class CategoryDetailFragment: Fragment() {
@@ -46,10 +47,13 @@ class CategoryDetailFragment: Fragment() {
     private fun setListAdapter(){
         // ConcatAdapter : 여러 개의 어댑터를 연결
         // 여러 가지의 뷰 타입을 하나의 어댑터에 배치 가능
+        val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
         val titleAdapter = CategorySectionTitleAdapter()
         val promotionAdapter = CategoryPromotionAdapter()
-        binding.rvCategoryDetail.adapter = ConcatAdapter(titleAdapter, promotionAdapter)
-
+        binding.rvCategoryDetail.adapter = ConcatAdapter(topSellingSectionAdapter, titleAdapter, promotionAdapter)
+        viewModel.topSelling.observe(viewLifecycleOwner) { TopSelling ->
+            topSellingSectionAdapter.submitList(listOf(TopSelling))
+        }
         viewModel.promotions.observe(viewLifecycleOwner) { Promotion ->
             titleAdapter.submitList(listOf(Promotion.title))
             promotionAdapter.submitList(Promotion.items)
