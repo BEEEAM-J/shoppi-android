@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<!--        클릭 이벤트를 구현하기 위해서 View Model을 바인딩한다.-->
+<!--        클릭 이벤트를 구현하기 위해서 ViewModel을 바인딩한다.-->
         <variable
             name="viewModel"
             type="com.shoppi.app.ui.category.CategoryViewModel" />

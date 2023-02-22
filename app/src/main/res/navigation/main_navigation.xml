@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_cart"/>
     <fragment
         android:id="@+id/naviagtion_product_detail"
-        android:name="com.shoppi.app.ui.ProductDetailFragment"
+        android:name="com.shoppi.app.ui.productdetail.ProductDetailFragment"
         android:label="ProductDetailFragment"
         tools:layout="@layout/fragment_product_detail"/>
     <fragment

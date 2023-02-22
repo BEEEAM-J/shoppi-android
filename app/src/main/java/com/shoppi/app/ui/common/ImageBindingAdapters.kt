@@ -2,6 +2,8 @@ package com.shoppi.app.ui.common
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.shoppi.app.GlideApp
 
 @BindingAdapter("imageUrl")
@@ -22,3 +24,6 @@ fun loadCircleImage(view: ImageView, imageUrl: String?) {
             .into(view)
     }
 }
+
+
+
