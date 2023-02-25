@@ -2,6 +2,7 @@ package com.shoppi.app.network
 
 import com.shoppi.app.model.Category
 import com.shoppi.app.model.CategoryDetail
+import com.shoppi.app.model.Product
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +17,9 @@ interface ApiClient {
 
     @GET("fashion_female.json")
     suspend fun getCategoryDetail(): CategoryDetail
+
+    @GET("products/{productId}.json")
+    suspend fun getProducts(@Path("productId") productId: String): Product
 
 //    @GET("{categoryId}.json")
 //    suspend fun getCategoryDetail(@Path("categoryId") categoryId: String): CategoryDetail

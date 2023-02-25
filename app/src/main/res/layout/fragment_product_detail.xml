@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="product"
+            type="com.shoppi.app.model.Product" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -13,7 +17,8 @@
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/shoppi_white">
+            android:background="@color/shoppi_white"
+            android:elevation="0dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_product_detail"
@@ -25,26 +30,28 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/iv_product_thumbnail"
+                    imageUrl="@{product.representativeImageUrl}"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:contentDescription="@string/descripition_product_thumbnail"
-                    android:src="@drawable/img_pdp_top_01"
+                    android:contentDescription="@string/description_product_thumbnail"
+                    android:scaleType="centerCrop"
                     app:layout_constraintDimensionRatio="w, 1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/Rounded12" />
                 <TextView
                     android:id="@+id/tv_product_brand_name"
                     style="@style/TextSubtitle3.Grey03"
@@ -53,10 +60,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
-                    android:text="twg.official"
+                    android:text="@{product.brandName}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/iv_product_thumbnail" />
+                    app:layout_constraintTop_toBottomOf="@+id/iv_product_thumbnail"
+                    tools:text="twg.official" />
 
                 <TextView
                     android:id="@+id/tv_product_label"
@@ -66,10 +74,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="16dp"
-                    android:text="[19차 리오더] 페이크 레더 숏 테일러 자켓 블랙(1 color)"
+                    android:text="@{product.label}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_product_brand_name" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_product_brand_name"
+                    tools:text="[19차 리오더] 페이크 레더 숏 테일러 자켓 블랙(1 color)" />
 
                 <TextView
                     android:id="@+id/tv_product_discount_rate"
@@ -78,30 +87,35 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
-                    android:text="10%"
+                    android:text="@{@string/unit_discount_rate(product.discountRate)}"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_product_label" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_product_label"
+                    tools:text="10%" />
 
                 <TextView
                     android:id="@+id/tv_product_discount_price"
                     style="@style/TextMedium"
+                    discountRate="@{product.discountRate}"
+                    priceAmount="@{product.price}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="99,800원"
                     app:layout_constraintBottom_toBottomOf="@id/tv_product_discount_rate"
                     app:layout_constraintStart_toEndOf="@+id/tv_product_discount_rate"
-                    app:layout_constraintTop_toTopOf="@id/tv_product_discount_rate" />
+                    app:layout_constraintTop_toTopOf="@id/tv_product_discount_rate"
+                    tools:text="99,800원" />
 
                 <TextView
                     android:id="@+id/tv_product_price"
                     style="@style/TextSubtitle2.Grey05"
+                    priceAmount="@{product.price}"
+                    strikeThrough="@{true}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
-                    android:text="110,000원"
                     app:layout_constraintBaseline_toBaselineOf="@id/tv_product_discount_rate"
-                    app:layout_constraintStart_toEndOf="@id/tv_product_discount_price" />
+                    app:layout_constraintStart_toEndOf="@id/tv_product_discount_price"
+                    tools:text="110,000원" />
 
                 <View
                     android:id="@+id/view_divider_product"
@@ -124,23 +138,71 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view_divider_product" />
 
-                <ImageView
-                    android:id="@+id/iv_product_detail_image"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_product_detail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:layout_marginBottom="50dp"
-                    android:contentDescription="@string/descripition_product_detail_image"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_pdp_top_01"
+                    android:layout_marginBottom="24dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_product_detail_image_title" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_product_detail_image_title"
+                    tools:listitem="@layout/item_product_detail_image" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@drawable/background_white90">
+
+            <TextView
+                android:id="@+id/tv_coupon_discount_text"
+                style="@style/TextCaption2.Grey04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/label_coupon_discount"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="쿠폰 적용가" />
+
+            <TextView
+                android:id="@+id/tv_coupon_discount_price"
+                style="@style/TextSubtitle1.Bold"
+                discountRate="@{product.discountRate}"
+                priceAmount="@{product.price}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_coupon_discount_text"
+                app:layout_constraintTop_toBottomOf="@+id/tv_coupon_discount_text"
+                tools:text="92,820원" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_"
+                style="@style/TextSubtitle1.White.Bold"
+                android:layout_width="186dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/background_shopping_basket_gradient"
+                android:gravity="center"
+                android:text="장바구니 담기"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

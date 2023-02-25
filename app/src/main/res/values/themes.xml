@@ -13,6 +13,7 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="appBarLayoutStyle">@style/AppBarStyle</item>
+        <item name="buttonStyle">@drawable/background_shopping_basket_gradient</item>
     </style>
 
     <style name="Theme.Shoppiandroid.Splash">

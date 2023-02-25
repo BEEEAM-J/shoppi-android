@@ -8,3 +8,4 @@ class CategoryDetailRemoteDataSource(private val api: ApiClient): CategoryDetail
         return api.getCategoryDetail()
     }
 }
+
