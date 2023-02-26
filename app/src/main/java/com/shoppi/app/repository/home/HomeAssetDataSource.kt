@@ -3,6 +3,7 @@ package com.shoppi.app.repository.home
 import com.google.gson.Gson
 import com.shoppi.app.AssetLoader
 import com.shoppi.app.model.HomeData
+import com.shoppi.app.model.Promotion
 
 class HomeAssetDataSource (private val assetLoader: AssetLoader): HomeDataSource {
 
@@ -13,4 +14,5 @@ class HomeAssetDataSource (private val assetLoader: AssetLoader): HomeDataSource
             gson.fromJson(homeJsonString, HomeData::class.java)
         }
     }
+
 }
