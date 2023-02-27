@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/backgorund_cart_product"
+    android:padding="16dp">
+
+    <CheckBox
+        android:id="@+id/checkBox_product"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/selector_checkbox"
+        android:button="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:checked="true"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_cart_product_detail_image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_product"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/Circle"/>
+
+    <TextView
+        android:id="@+id/tv_cart_product_label"
+        style="@style/TextCaption1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_cart_product_detail_image"
+        app:layout_constraintEnd_toStartOf="@id/btn_cart_product_delete"
+        app:layout_constraintTop_toTopOf="@+id/iv_cart_product_detail_image"
+        tools:text="캐시미어 100% 터틀넥 스웨터" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cart_product_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_cart_product_option"
+        style="@style/TextCaption1.Grey01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:layout_constraintStart_toStartOf="@id/tv_cart_product_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_cart_product_label"
+        tools:text="옵션 : Free" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cart_product_count_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_minus"
+        app:layout_constraintStart_toStartOf="@+id/tv_cart_product_option"
+        app:layout_constraintTop_toBottomOf="@+id/tv_cart_product_option"
+        android:layout_marginTop="12dp"/>
+
+    <TextView
+        android:id="@+id/tv_cart_product_count"
+        style="@style/TextSubtitle2.Black02.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/btn_cart_product_count_minus"
+        app:layout_constraintBottom_toBottomOf="@id/btn_cart_product_count_minus"
+        app:layout_constraintStart_toEndOf="@id/btn_cart_product_count_minus"
+        app:layout_constraintEnd_toStartOf="@+id/btn_cart_product_count_plus"
+        tools:text="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cart_product_count_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/ic_plus"
+        app:layout_constraintTop_toTopOf="@id/btn_cart_product_count_minus"
+        app:layout_constraintStart_toEndOf="@+id/tv_cart_product_count"/>
+
+    <TextView
+        style="@style/TextSubtitle1.Bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_cart_product_count_minus"
+        tools:text="81,000원" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

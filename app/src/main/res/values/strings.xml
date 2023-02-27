@@ -11,4 +11,5 @@
     <string name="label_cart_icon">장바구니</string>
     <string name="label_category_new">NEW</string>
     <string name="label_coupon_discount">쿠폰 적용가</string>
+    <string name="order_product">선택한 상품 주문하기</string>
 </resources>
