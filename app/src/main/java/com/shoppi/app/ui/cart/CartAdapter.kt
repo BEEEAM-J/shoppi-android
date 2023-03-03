@@ -10,22 +10,26 @@ import com.shoppi.app.model.CartItem
 import com.shoppi.app.model.CartProduct
 
 private const val VIEW_TYPE_HEADER = 0
-private const val VIEW_TYPE_ITEM = 0
+private const val VIEW_TYPE_ITEM = 1
 
-class CartAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CartAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val cartProducts = mutableListOf<CartProduct>()
 
-    // ViewHolder 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return when(viewType) {
-            VIEW_TYPE_HEADER -> HeaderViewHolder(ItemCartSectionHeaderBinding.inflate(inflater, parent, false))
+        return when (viewType) {
+            VIEW_TYPE_HEADER -> HeaderViewHolder(
+                ItemCartSectionHeaderBinding.inflate(
+                    inflater,
+                    parent,
+                    false
+                )
+            )
             else -> ItemViewHolder(ItemCartSectionBinding.inflate(inflater, parent, false))
         }
     }
 
-    // ViewHolder에 데이터 전달
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HeaderViewHolder -> {
@@ -39,10 +43,6 @@ class CartAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    override fun getItemCount(): Int {
-        return cartProducts.size
-    }
-
     override fun getItemViewType(position: Int): Int {
         return when (cartProducts[position]) {
             is CartHeader -> VIEW_TYPE_HEADER
@@ -50,19 +50,24 @@ class CartAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
+    override fun getItemCount(): Int {
+        return cartProducts.size
+    }
+
     fun submitHeaderAndItemList(items: List<CartItem>) {
         val itemGroups = items.groupBy { it.brandName }
         val products = mutableListOf<CartProduct>()
         itemGroups.entries.forEach { entry ->
             val header = CartHeader(entry.key)
-            products.add((header))
+            products.add(header)
             products.addAll(entry.value)
         }
         cartProducts.addAll(products)
         notifyItemRangeInserted(cartProducts.size, products.size)
     }
 
-    class HeaderViewHolder(private val binding: ItemCartSectionHeaderBinding): RecyclerView.ViewHolder(binding.root) {
+    class HeaderViewHolder(private val binding: ItemCartSectionHeaderBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(header: CartHeader) {
             binding.header = header
@@ -70,7 +75,8 @@ class CartAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    class ItemViewHolder(private val binding: ItemCartSectionBinding): RecyclerView.ViewHolder(binding.root) {
+    class ItemViewHolder(private val binding: ItemCartSectionBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CartItem) {
             binding.item = item

@@ -1,19 +1,24 @@
 package com.shoppi.app.model
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 sealed class CartProduct
 
 data class CartHeader(
-    @SerializedName("brand_name") val brandName: String
+    val brandName: String
 ): CartProduct()
 
+@Entity(
+    tableName = "cart_item"
+)
 data class CartItem(
-    @SerializedName("product_id") val productId: String,
+    @PrimaryKey @ColumnInfo(name = "product_id") val productId: String,
     val label: String,
     val type: String,
     val price: Int,
-    @SerializedName("thumbnail_image_url") val thumbnailImageUrl: String,
-    @SerializedName("brand_name") val brandName: String,
+    @ColumnInfo(name = "thumbnail_image_url") val thumbnailImageUrl: String,
+    @ColumnInfo(name = "brand_name") val brandName: String,
     val amount: Int
 ): CartProduct()

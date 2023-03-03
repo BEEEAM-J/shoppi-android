@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.shoppi.app'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.shoppi.app"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -61,6 +61,11 @@ dependencies {
     implementation platform("com.squareup.okhttp3:okhttp-bom:4.9.0")
     implementation 'com.squareup.okhttp3:okhttp'
     implementation 'com.squareup.okhttp3:logging-interceptor'
+
+    // Databases
+    implementation "androidx.room:room-runtime:2.5.0"
+    implementation "androidx.room:room-ktx:2.5.0"
+    kapt "androidx.room:room-compiler:2.5.0"
 
     // Coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"

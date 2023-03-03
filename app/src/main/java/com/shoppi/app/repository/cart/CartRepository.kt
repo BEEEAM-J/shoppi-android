@@ -1,11 +1,34 @@
 package com.shoppi.app.repository.cart
 
-import com.shoppi.app.model.CartProduct
+import com.shoppi.app.model.CartItem
+import com.shoppi.app.model.Product
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class CartRepository(
-    private val dataSource: CartRemoteDataSource
+    private val localDataSource: CartItemLocalDataSource,
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
-    suspend fun getCartProduct(): CartProduct {
-        return dataSource.getCartProduct()
+
+    suspend fun getCartItems(): List<CartItem> {
+        return withContext(ioDispatcher) {
+            localDataSource.getCartItems()
+        }
+    }
+
+    suspend fun addCartItem(product: Product) {
+        withContext(ioDispatcher) {
+            val cartItem = CartItem (
+                productId = product.productId,
+                label = product.label,
+                type = product.type ?: "",
+                price = product.price,
+                thumbnailImageUrl = product.thumbnailImageUrl ?: "",
+                brandName = product.brandName ?: "",
+                amount = 1
+            )
+            localDataSource.addCartItem(cartItem)
+        }
     }
 }

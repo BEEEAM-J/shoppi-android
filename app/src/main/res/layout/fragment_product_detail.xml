@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="viewModel"
+            type="com.shoppi.app.ui.productdetail.ProductDetailViewModel" />
+
+        <variable
             name="product"
             type="com.shoppi.app.model.Product" />
     </data>
@@ -196,6 +200,7 @@
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/background_shopping_basket_gradient"
                 android:gravity="center"
+                android:onClick="@{() -> viewModel.addCart(product)}"
                 android:text="장바구니 담기"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
